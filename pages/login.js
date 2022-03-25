@@ -30,11 +30,8 @@ function SignInButton() {
 
     return (
         <>
-            <button className="" onClick={signInWithGoogle}>
+            <button className="btn btn-google text-black" onClick={signInWithGoogle}>
                 <img src={'/google.png'} width="30px" alt=""/> Sign in with Google
-            </button>
-            <button onClick={() => signInAnonymously(auth)}>
-                Sign in Anonymously
             </button>
         </>
     );
@@ -42,7 +39,7 @@ function SignInButton() {
 
 // Sign out button
 function SignOutButton() {
-    return <button className="" onClick={() => signOut(auth)}>Sign Out</button>;
+    return <button className="btn btn-danger" onClick={() => signOut(auth)}>Sign Out</button>;
 }
 
 function UsernameForm() {
@@ -112,7 +109,7 @@ function UsernameForm() {
                 <form onSubmit={onSubmit}>
                     <input name="username" placeholder="myname" value={formValue} onChange={onChange} />
                     {/* <UsernameMessage username={formValue} isValid={isValid} loading={loading} /> */}
-                    <button type="submit" className="btn-green" disabled={!isValid}>
+                    <button type="submit" className="btn btn-success" disabled={!isValid}>
                         Choose
                     </button>
 
