@@ -20,6 +20,16 @@ button {
     border-radius: 50px;
 }
 
+button.btn-google {
+    background-color: white;
+    color: var(--color-text);
+}
+
+.btn-google img {
+    width: 30px;
+    margin-right: 10px;
+}
+
 @keyframes loader {
     0% {
         opacity: 1
@@ -64,14 +74,6 @@ button {
     transform: translate(150px, 0);
     background: #abbd81;
     animation-delay: -1s;
-}
-
-.loadingio-spinner-bars-iryydwcypt {
-    width: 200px;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    background: rgba(NaN, NaN, NaN, 0);
 }
 
 .loader {

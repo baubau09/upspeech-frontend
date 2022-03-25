@@ -13,6 +13,7 @@
     "bootstrap-icons": "^1.8.1",
     "chart.js": "^3.7.1",
     "firebase": "^9.6.9",
+    "lodash.debounce": "^4.0.8",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-bootstrap": "^2.2.1",
@@ -20,7 +21,8 @@
     "react-firebase-hooks": "^5.0.3",
     "react-hook-form": "^7.28.1",
     "react-hot-toast": "^2.2.0",
-    "react-media-recorder": "^1.6.3"
+    "react-media-recorder": "^1.6.3",
+    "react-scripts": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "8.11.0",
