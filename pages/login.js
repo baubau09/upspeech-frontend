@@ -4,7 +4,7 @@ import { signInWithPopup, signOut } from 'firebase/auth';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import { UserContext } from '../lib/context';
 import debounce from 'lodash.debounce';
-import Image from 'next/image';
+
 const LoginPage = () => {
     const { user, username } = useContext(UserContext);
 
