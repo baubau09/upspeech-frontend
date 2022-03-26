@@ -19,7 +19,7 @@ const Header = () => {
 
 
     return (
-        <div className="container sticky-top" style={{backgroundColor: '#352953'}}>
+        <div className="container-fluid sticky-top" style={{backgroundColor: '#352953'}}>
             
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
                 <Link href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -37,19 +37,30 @@ const Header = () => {
                             About us
                         </Nav.Link>
                     </li>
+                    {
+                        user && 
+                        <li className="nav-item mx-2">
+                            <Nav.Link href="#speak" className="nav-link welcome">
+                                Speak
+                            </Nav.Link>
+                        </li>
+                    }
                     <li className="nav-item mx-2">
                         <Nav.Link href="#contact" className="nav-link welcome">
                             Contact
                         </Nav.Link>
                     </li>
+                    
                 </Nav>
 
                 <AuthCheck>
-                    <div className="col-md-3 text-end">
+                    <div className="col-md-3 me-0 pe-0 text-end">
                         <Dropdown>
                             <Dropdown.Toggle className="bg-transparent border-0 text-body">
-                                {!isLoading && 
-                                    <img src={ user.photoURL } width="50" height="50" alt="" className="rounded-circle" style={{ objectFit: 'cover' }} />
+                                {!isLoading && user ?
+                                    <img src={user.photoURL} width="50" height="50" alt="" className="rounded-circle" style={{ objectFit: 'cover' }} />
+                                    :
+                                    <img src='./icon.png' width="50" height="50" alt="" className="rounded-circle" style={{ objectFit: 'cover' }} />
                                 }
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="dropdown-profile-menu shadow-lg">
