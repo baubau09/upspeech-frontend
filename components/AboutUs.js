@@ -28,7 +28,7 @@ const AboutUs = () => {
 
 
             <div className='container team'>
-                <div className="row gy-4">
+                <div className="row gy-4 mx-0 mx-md-2">
 
                     <div className="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div className="member">

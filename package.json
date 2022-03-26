@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
     "@fortawesome/fontawesome-free": "^6.1.1",
     "bootstrap-icons": "^1.8.1",
     "chart.js": "^3.7.1",
     "firebase": "^9.6.9",
+    "framer-motion": "^6.2.8",
     "lodash.debounce": "^4.0.8",
     "next": "12.1.0",
     "react": "17.0.2",

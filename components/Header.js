@@ -22,8 +22,8 @@ const Header = () => {
         <div className="container-fluid sticky-top" style={{backgroundColor: '#352953'}}>
             
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
-                <Link href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <img src='logo_colored.svg' width={250} />
+                <Link href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" passHref>
+                    <img src='logo_colored.svg' width={250} style={{cursor: 'pointer'}}/>
                 </Link>
 
                 <Nav className="nav nav-pills mb-2 justify-content-center">
@@ -40,7 +40,7 @@ const Header = () => {
                     {
                         user && 
                         <li className="nav-item mx-2">
-                            <Nav.Link href="#speak" className="nav-link welcome">
+                            <Nav.Link href="/speak" className="nav-link welcome">
                                 Speak
                             </Nav.Link>
                         </li>

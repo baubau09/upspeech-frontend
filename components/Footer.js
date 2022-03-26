@@ -18,7 +18,7 @@ const Footer = () => {
                             </a>
                         </div>
                     </div>
-
+{/* 
                     <div className="d-flex justify-content-between">
                         <div className="">
                             <a href="/welcome" className="text-dark text-decoration-none">
@@ -40,7 +40,7 @@ const Footer = () => {
                                 Terms and Conditions
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </footer>
             <div className="py-3 text-white d-flex justify-content-center" style={{background: '#5A426A'}}>
