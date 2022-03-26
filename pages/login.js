@@ -4,6 +4,7 @@ import { signInWithPopup, signOut } from 'firebase/auth';
 import { useEffect, useState, useCallback, useContext } from 'react';
 import { UserContext } from '../lib/context';
 import debounce from 'lodash.debounce';
+import { Alert } from 'react-bootstrap';
 
 const LoginPage = () => {
     const { user, username } = useContext(UserContext);
@@ -12,12 +13,14 @@ const LoginPage = () => {
     // 2. user signed in, but missing username <UsernameForm />
     // 3. user signed in, has username <SignOutButton />
     return (
-        <main>
+        <main className='container'>
+            <div className='d-flex justify-content-center'>
             {user ?
                 !username ? <UsernameForm /> : <SignOutButton />
                 :
                 <SignInButton />
             }
+            </div>
         </main>
     );
 }
@@ -44,7 +47,7 @@ function SignOutButton() {
 
 function UsernameForm() {
     const [formValue, setFormValue] = useState('');
-    const [isValid, setIsValid] = useState(false);
+    const [isValid, setIsValid] = useState(true);
     const [loading, setLoading] = useState(false);
     const { user, username } = useContext(UserContext);
 
@@ -102,27 +105,43 @@ function UsernameForm() {
         []
     );
 
+    function UsernameMessage({ username, isValid, loading }) {
+        if (loading) {
+          return <p>Checking...</p>;
+        } else if (isValid) {
+          return <p className="text-success mb-0">{username} is available!</p>;
+        } else if (username && !isValid) {
+          return <p className="text-danger mb-0">That username is taken!</p>;
+        } else {
+          return <p></p>;
+        }
+    }
+
     return (
         !username && (
             <section>
                 <h3>Choose Username</h3>
-                <form onSubmit={onSubmit}>
-                    <input name="username" placeholder="myname" value={formValue} onChange={onChange} />
-                    {/* <UsernameMessage username={formValue} isValid={isValid} loading={loading} /> */}
-                    <button type="submit" className="btn btn-success" disabled={!isValid}>
-                        Choose
+                <form onSubmit={onSubmit} className='mb-5'>
+                    <input name="username" placeholder="myname" value={formValue} onChange={onChange} 
+                    className='form-control mb-3'/>
+                    <Alert variant="primary">
+                        <UsernameMessage username={formValue} isValid={isValid} loading={loading} />
+                    </Alert>
+                    <button type="submit" className="btn btn-secondary mb-4" disabled={!isValid || !formValue}>
+                        Submit
                     </button>
 
-                    <h3>Debug State</h3>
-                    <div>
+                    {/* <h3>Debug State</h3> */}
+                    {/* <div>
                         Username: {formValue}
                         <br />
                         Loading: {loading.toString()}
                         <br />
                         Username Valid: {isValid.toString()}
-                    </div>
+                    </div> */}
                 </form>
-                <SignOutButton/>
+                <div className='text-center'><SignOutButton/></div>
+                
             </section>
         )
     );
