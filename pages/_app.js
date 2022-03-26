@@ -13,6 +13,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <UserContext.Provider value={userData}>
+                <Header/>
                 <Component {...pageProps} />
                 <Toaster/>
             </UserContext.Provider>

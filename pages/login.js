@@ -122,6 +122,7 @@ function UsernameForm() {
                         Username Valid: {isValid.toString()}
                     </div>
                 </form>
+                <SignOutButton/>
             </section>
         )
     );
