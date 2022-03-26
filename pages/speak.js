@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { useState, useContext } from 'react';
 import { UserContext } from "../lib/context";
 import toast from "react-hot-toast";
+import AudioRecorder from "../components/AudioRecorder";
 
 export default function SpeakPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,25 +15,6 @@ export default function SpeakPage() {
         toast.success('Save successfully!')
     }
 
-    // const onSubmit = async (values) => {
-    //     const uid = auth.currentUser.uid;
-    //     const collectionRef = collection(getFirestore(), 'users', uid, 'speeches')
-    //     const data = {
-    //         uid,
-    //         username,
-    //         wordCount: 0,
-    //         uploadedAt: serverTimestamp(),
-    //         updatedAt: serverTimestamp(),
-    //         script: values.script
-    //     }
-    //     const docRef = await addDoc(collectionRef, data);
-
-    //     setSpeechID(docRef.id)
-    //     setInitData(data)
-    //     console.log(docRef.id)
-
-    //     toast.success('Save successfully!')
-    // }
     return (
         <>
 
@@ -78,7 +60,7 @@ export default function SpeakPage() {
                 <div className="d-flex justify-content-center">
                     <Tab.Content>
                         <Tab.Pane eventKey="first">
-                            Record
+                            <AudioRecorder/>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
                             <AudioUploader script={script}/>

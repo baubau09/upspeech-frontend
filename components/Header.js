@@ -5,9 +5,10 @@ import { UserContext } from '../lib/context'
 import { auth } from '../lib/firebase';
 import { useContext, useEffect, useState } from 'react';
 import { signOut } from 'firebase/auth';
-
+import { useRouter } from 'next/router'
 
 const Header = () => {
+    const router = useRouter()
     const {username, user} = useContext(UserContext)
     const [isLoading, setLoading] = useState(true)
 
@@ -28,12 +29,12 @@ const Header = () => {
 
                 <Nav className="nav nav-pills mb-2 justify-content-center">
                     <li className="nav-item mx-2">
-                        <Nav.Link href="#home" className="welcome">
+                        <Nav.Link href="/#home" className="welcome">
                             Home
                         </Nav.Link>
                     </li>
                     <li className="nav-item mx-2">
-                        <Nav.Link href="#about" className="nav-link welcome">
+                        <Nav.Link href="/#about" className="nav-link welcome">
                             About us
                         </Nav.Link>
                     </li>
@@ -46,7 +47,7 @@ const Header = () => {
                         </li>
                     }
                     <li className="nav-item mx-2">
-                        <Nav.Link href="#contact" className="nav-link welcome">
+                        <Nav.Link href="/#contact" className="nav-link welcome">
                             Contact
                         </Nav.Link>
                     </li>
@@ -64,18 +65,23 @@ const Header = () => {
                                 }
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="dropdown-profile-menu shadow-lg">
-                                <Dropdown.Item className="dropdown-profile" onClick={() => window.location.href = "/profile"}>
-                                    <i className="fas fa-user-circle" style={{ fontSize: 18 }}></i>
-                                    <span className="ms-3" style={{ fontWeight: 600 }}>
-                                        Profile
-                                    </span>
-                                </Dropdown.Item>
-                                <Dropdown.Item className="dropdown-profile" onClick={() => window.location.href = "/my-posts"}>
-                                    <i className="fas fa-pager" style={{ fontSize: 18 }}></i>
-                                    <span className="ms-3" style={{ fontWeight: 600 }}>
-                                        Dashboard
-                                    </span>
-                                </Dropdown.Item>
+                                <Link href="/profile" passHref>
+                                    <Dropdown.Item className="dropdown-profile">
+                                        <i className="fas fa-user-circle" style={{ fontSize: 18 }}></i>
+                                        <span className="ms-3" style={{ fontWeight: 600 }}>
+                                            Profile
+                                        </span>
+                                    </Dropdown.Item>
+                                </Link>
+                                <Link href="/dashboard" passHref>
+                                    <Dropdown.Item className="dropdown-profile">
+                                        <i className="fas fa-pager" style={{ fontSize: 18 }}></i>
+                                        <span className="ms-3" style={{ fontWeight: 600 }}>
+                                            Dashboard
+                                        </span>
+                                    </Dropdown.Item>
+                                </Link>
+                                
                                 <Dropdown.Divider />
                                 <Dropdown.Item className="dropdown-profile-logout"
                                 onClick={() => signOut(auth)}>
