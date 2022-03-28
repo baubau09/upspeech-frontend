@@ -27,16 +27,22 @@ const AudioRecorder = () => {
 
     return (
         <>
-            <div>
-                <p>{status}</p>
-                <div className="my-4">
-                    <button className="btn btn-danger me-2" onClick={startRecording}>Start Recording</button>
-                    <button className="btn btn-light" onClick={stopRecording}>Stop Recording</button>
-                </div>
-                    
 
-                <audio src={mediaBlobUrl} controls autoPlay loop />
+            <div className="my-4 d-flex justify-content-center">
+                {
+                    status == 'idle' || status == 'stopped'
+                        ?
+                        <button className="btn btn-danger me-2" onClick={startRecording}><i className="bi bi-record-fill fs-4"></i></button>
+                        :
+                        <button className="btn btn-record me-2" onClick={stopRecording}><i className="bi bi-stop-circle-fill fs-4"></i></button>
+                }
+                
             </div>
+            <div>
+            <audio src={mediaBlobUrl} controls autoPlay loop />
+            </div>
+
+
             {/* <div>
                 {
                     !uploading &&

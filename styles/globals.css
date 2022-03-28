@@ -48,6 +48,42 @@ a.welcome.active:hover {
     box-shadow: 4px 4px 16px 0 rgba(164, 164, 194, 0.2) !important;
 }
 
+.btn-record {
+    background-color: #1c87c9;
+    -webkit-border-radius: 60px;
+    border-radius: 60px;
+    border: none;
+    color: #eeeeee;
+    cursor: pointer;
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+@keyframes glowing {
+    0% {
+        background-color: #e61e2a;
+        box-shadow: 0 0 5px #eeeeee;
+    }
+
+    50% {
+        background-color: #f47e60;
+        box-shadow: 0 0 20px #f47e60;
+    }
+
+    100% {
+        background-color: #e15b64;
+        box-shadow: 0 0 5px #e15b64;
+    }
+}
+
+.btn-record {
+    animation: glowing 1300ms infinite;
+}
+
 /*--------------------------------------------------------------
 # Input
 --------------------------------------------------------------*/
