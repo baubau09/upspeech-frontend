@@ -5,6 +5,7 @@ import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } fr
 import { serverTimestamp, query, collection, orderBy, getFirestore, setDoc, doc, addDoc } from 'firebase/firestore';
 import { auth, storage, STATE_CHANGED, firestore } from '../lib/firebase';
 import { UserContext } from "../lib/context";
+import Results from "./Results";
 
 const AudioRecorder = () => {
     const {
@@ -24,6 +25,12 @@ const AudioRecorder = () => {
     //     const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
     // }
 
+    const [isResult, setIsResult] = useState(false)
+
+    const submitData = async () => {
+        setIsResult(true)
+    }
+
 
     return (
         <>
@@ -38,9 +45,30 @@ const AudioRecorder = () => {
                 }
                 
             </div>
-            <div>
-            <audio src={mediaBlobUrl} controls autoPlay loop />
+            <div className='d-flex justify-content-center'>
+                <audio src={mediaBlobUrl} controls autoPlay loop />
             </div>
+
+            <div className='d-flex justify-content-center mt-5 mb-5'>
+                <button className='btn btn-primary-light' onClick={submitData}>Submit</button>
+            </div>
+
+            {
+                isResult && 
+                <>
+                <Results 
+                n_words="86"
+                pace="Just Right" 
+                n_pace="90"
+                fillers="Needs Improvement"
+                n_fillers="33"
+                pct_fillers="41.6"
+                pronun="Good"
+                n_pronun="6"
+                pct_pronun="6.97" 
+                emotion="Neutral"/>
+                </>
+            }
 
 
             {/* <div>
