@@ -46,7 +46,7 @@ export default function SpeakPage() {
                 isSaved &&
                 <>
                     <div className="d-flex justify-content-center mt-5">
-                        <h3>2. Record or Upload your speech</h3>
+                        <h3>Step 2: Record or Upload your speech</h3>
                     </div>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                         <div className="d-flex justify-content-center">

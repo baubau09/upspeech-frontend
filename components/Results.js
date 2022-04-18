@@ -29,42 +29,42 @@ const Results = ({n_words, pace, n_pace, fillers, n_fillers, pct_fillers, pronun
                         <Tab.Content>
                             <Tab.Pane eventKey="pace" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
-                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">Just Right</p>
+                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">{pace}</p>
                                 </div>
                                 <p className="text-center">
-                                    <p className="fs-4">90wpm</p>
+                                    <p className="fs-4">{n_pace}wpm</p>
                                     <p>
-                                         is the perfect pace for your speech!
+                                        Your speaking speed is {pace}!
                                     </p>
                                 </p>
                             </Tab.Pane>
                             <Tab.Pane eventKey="eloquence" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
-                                    <p style={{color: '#9c8200', fontWeight: 600}} className="fs-3">Needs Improvements</p>
+                                    <p style={{color: '#9c8200', fontWeight: 600}} className="fs-3">{fillers}</p>
                                 </div>
                                 <p className="text-center">
                                     <p>
-                                        You have <span className="fs-4">33</span> filler words in a speech, <br/> which account for about <span className="fs-4 text-danger">41.6%</span> of your speech.
+                                        You have <span className="fs-4">{n_fillers}</span> filler words in a speech, <br/> which account for about <span className="fs-4 text-danger">{pct_fillers}%</span> of your speech.
                                     </p>
                                 </p>
                             </Tab.Pane>
                             <Tab.Pane eventKey="pronunciation" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
-                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">Good</p>
+                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">{pronun}</p>
                                 </div>
                                 <p className="text-center">
                                     <p>
-                                        You have <span className="fs-4">6</span> incorrectly pronounced words <br/> in a speech of 86 words, <br/> which account for <span className="fs-4 text-success">6.97%</span> of your speech.
+                                        You have <span className="fs-4">{n_pronun}</span> incorrectly pronounced words <br/> in a speech of {n_words} words, <br/> which account for <span className="fs-4 text-success">{pct_pronun}%</span> of your speech.
                                     </p>
                                 </p>
                             </Tab.Pane>
                             <Tab.Pane eventKey="emotion" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
-                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">Neutral</p>
+                                    <p style={{color: '#229c00', fontWeight: 600}} className="fs-3">{emotion}</p>
                                 </div>
                                 <p className="text-center">
                                     <p>
-                                        You seem to have a neutral tone<br/> in your speech!
+                                        You seem to have a {emotion} tone<br/> in your speech!
                                     </p>
                                 </p>
                             </Tab.Pane>
