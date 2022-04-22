@@ -18,9 +18,9 @@ export default function AudioUploader({script}) {
         const file = Array.from(e.target.files)[0];
         const extension = 'wav';
         // const extension = file.type.split('/')[1];
-
+        const fileName = `${auth.currentUser.uid}_${Date.now()}.${extension}`
         // Makes reference to the storage bucket location
-        const fileRef = ref(storage, `uploads/${auth.currentUser.uid}/${auth.currentUser.uid}_${Date.now()}.${extension}`);
+        const fileRef = ref(storage, `uploads/${auth.currentUser.uid}/${fileName}`);
         setUploading(true);
 
         // Starts the upload
@@ -54,6 +54,7 @@ export default function AudioUploader({script}) {
             wordCount: 0,
             script: script,
             audioURL: downloadURL,
+            fileName: fileName,
             uploadedAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
             fillers: 0,
