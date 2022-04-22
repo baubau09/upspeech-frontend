@@ -6,6 +6,7 @@ import { serverTimestamp, query, collection, orderBy, getFirestore, setDoc, doc,
 import { auth, storage, STATE_CHANGED, firestore } from '../lib/firebase';
 import { UserContext } from "../lib/context";
 import Results from "./Results";
+import axios from "axios";
 
 const AudioRecorder = () => {
     const {
@@ -21,15 +22,26 @@ const AudioRecorder = () => {
     // const [downloadURL, setDownloadURL] = useState(null);
     // const { username } = useContext(UserContext);
 
-    // const blobProcessing = async () => {
-    //     const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
-    // }
+    const blobProcessing = async () => {
+        const audioBlob = await fetch(mediaBlobUrl).then(r => r.blob());
+        console.log(audioBlob);
+        const formData = new FormData();
+        formData.append("file", audioBlob, `${auth.currentUser.uid}_${Date.now()}.wav`);
+        const result = await axios.post(
+            `http://127.0.0.1:5000/api/test`,
+            formData,
+            {
+                crossDomain: true,
+            }
+        )
+        return result
+    }
 
     const [isResult, setIsResult] = useState(false)
 
-    const submitData = async () => {
-        setIsResult(true)
-    }
+    // const submitData = async () => {
+    //     setIsResult(true)
+    // }
 
 
     return (
@@ -43,30 +55,30 @@ const AudioRecorder = () => {
                         :
                         <button className="btn btn-record me-2" onClick={stopRecording}><i className="bi bi-stop-circle-fill fs-4"></i></button>
                 }
-                
+
             </div>
             <div className='d-flex justify-content-center'>
                 <audio src={mediaBlobUrl} controls autoPlay loop />
             </div>
 
             <div className='d-flex justify-content-center mt-5 mb-5'>
-                <button className='btn btn-primary-light' onClick={submitData}>Submit</button>
+                <button className='btn btn-primary-light' onClick={blobProcessing}>Submit</button>
             </div>
 
             {
-                isResult && 
+                isResult &&
                 <>
-                <Results 
-                n_words="86"
-                pace="Just Right" 
-                n_pace="90"
-                fillers="Needs Improvement"
-                n_fillers="33"
-                pct_fillers="41.6"
-                pronun="Good"
-                n_pronun="6"
-                pct_pronun="6.97" 
-                emotion="Neutral"/>
+                    <Results
+                        n_words="86"
+                        pace="Just Right"
+                        n_pace="90"
+                        fillers="Needs Improvement"
+                        n_fillers="33"
+                        pct_fillers="41.6"
+                        pronun="Good"
+                        n_pronun="6"
+                        pct_pronun="6.97"
+                        emotion="Neutral" />
                 </>
             }
 

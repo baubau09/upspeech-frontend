@@ -20,7 +20,7 @@ export default function AudioUploader({script}) {
         // const extension = file.type.split('/')[1];
 
         // Makes reference to the storage bucket location
-        const fileRef = ref(storage, `uploads/${auth.currentUser.uid}/${Date.now()}.${extension}`);
+        const fileRef = ref(storage, `uploads/${auth.currentUser.uid}/${auth.currentUser.uid}_${Date.now()}.${extension}`);
         setUploading(true);
 
         // Starts the upload
