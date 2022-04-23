@@ -99,7 +99,7 @@ export default function AudioUploader({script}) {
                 <>
                     <div className='d-flex justify-content-center'>
                         <label className="btn btn-secondary-light btn-lg">
-                            🎤 Upload file
+                            <i className="bi bi-cloud-arrow-up-fill fs-4"></i> Upload file
                             <input type="file" onChange={uploadFile} accept="audio/wav,audio/mp4,audio/aac,audio/mpeg" />
                         </label>
                     </div>
