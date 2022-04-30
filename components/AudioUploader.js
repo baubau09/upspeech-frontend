@@ -6,11 +6,15 @@ import { ProgressBar, ProgressBarProps } from 'react-bootstrap';
 import { serverTimestamp, query, collection, orderBy, getFirestore, setDoc, doc, addDoc } from 'firebase/firestore';
 import { UserContext } from '../lib/context';
 import toast from 'react-hot-toast';
+import Results from './Results';
 // Uploads audio to Firebase Storage
-export default function AudioUploader({script}) {
+export default function AudioUploader({ script }) {
     const [uploading, setUploading] = useState(false);
     const [progress, setProgress] = useState(0);
     const [downloadURL, setDownloadURL] = useState(null);
+    const [analyzing, setAnalyzing] = useState(false);
+    const [isResult, setIsResult] = useState(false);
+    const [result, setResult] = useState({});
     const { username } = useContext(UserContext);
     // Creates a Firebase Upload Task
     const uploadFile = async (e) => {
@@ -18,7 +22,7 @@ export default function AudioUploader({script}) {
         const file = Array.from(e.target.files)[0];
         const extension = 'wav';
         // const extension = file.type.split('/')[1];
-        
+
         // Makes reference to the storage bucket location
         const fileRef = ref(storage, `uploads/${auth.currentUser.uid}/${auth.currentUser.uid}_${Date.now()}.${extension}`);
         setUploading(true);
@@ -67,11 +71,34 @@ export default function AudioUploader({script}) {
             pronunErrPct: 0
         };
 
-        //await setDoc(docRef, data);
-        const  newDocRef = await addDoc(collectionRef, data)
-        const newDocID = newDocRef.id
+        toast.success('Data uploaded! Please wait for results');
 
-        toast.success('Data uploaded!');
+        //await setDoc(docRef, data);
+        const newDocRef = await addDoc(collectionRef, data)
+        const newDocID = newDocRef.id
+        console.log(newDocID)
+        await axios.post(
+            `http://127.0.0.1:5000/api/eval`,
+            {
+                uid,
+                username,
+                script: script,
+                audioURL: downloadURL,
+                fileName: fileName,
+                uploadedAt: serverTimestamp(),
+                updatedAt: serverTimestamp(),
+                speechID: newDocID
+            }
+        ).then((res) => {
+            setResult(res.data)
+            console.log(result)
+            setAnalyzing(false)
+            setIsResult(true)
+        }).catch((e) => {
+            console.log(e)
+        })
+
+
 
     }
 
@@ -90,8 +117,6 @@ export default function AudioUploader({script}) {
                     </div>
                 </>
             }
-
-
 
             {/* <h3 className='text-center fw-bold'>{progress}%</h3> */}
 
@@ -118,6 +143,23 @@ export default function AudioUploader({script}) {
                         <button className='btn btn-primary-light' onClick={submitData}>Submit</button>
                     </div>
                 </>}
+
+            {
+                isResult &&
+                <>
+                    <Results
+                        n_words={result.wordCount}
+                        pace={result.paceDesc}
+                        n_pace={result.pace}
+                        fillers={result.fillersDesc}
+                        n_fillers={result.fillers}
+                        pct_fillers={result.fillersPct}
+                        pronun="Good"
+                        n_pronun="6"
+                        pct_pronun="6.97"
+                        emotion="Neutral" />
+                </>
+            }
         </>
     );
 }

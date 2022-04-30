@@ -65,7 +65,7 @@ export default function SpeakPage() {
                         <div className="d-flex justify-content-center">
                             <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                    <AudioRecorder />
+                                    <AudioRecorder script={script}/>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="second">
                                     <AudioUploader script={script} />
