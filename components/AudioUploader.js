@@ -7,6 +7,7 @@ import { serverTimestamp, query, collection, orderBy, getFirestore, setDoc, doc,
 import { UserContext } from '../lib/context';
 import toast from 'react-hot-toast';
 import Results from './Results';
+import axios from 'axios';
 // Uploads audio to Firebase Storage
 export default function AudioUploader({ script }) {
     const [uploading, setUploading] = useState(false);
@@ -68,7 +69,8 @@ export default function AudioUploader({ script }) {
             paceDesc: '',
             pronunErr: 0,
             pronunErrDesc: '',
-            pronunErrPct: 0
+            pronunErrPct: 0,
+            pronunWords: []
         };
 
         toast.success('Data uploaded! Please wait for results');
@@ -154,9 +156,10 @@ export default function AudioUploader({ script }) {
                         fillers={result.fillersDesc}
                         n_fillers={result.fillers}
                         pct_fillers={result.fillersPct}
-                        pronun="Good"
-                        n_pronun="6"
-                        pct_pronun="6.97"
+                        pronun={result.pronunErrDesc}
+                        n_pronun={result.pronunErr}
+                        pct_pronun={result.pronunErrPct}
+                        pronun_words={result.pronunWords}
                         emotion="Neutral" />
                 </>
             }

@@ -72,7 +72,8 @@ const AudioRecorder = ({ script }) => {
                 paceDesc: '',
                 pronunErr: 0,
                 pronunErrDesc: '',
-                pronunErrPct: 0
+                pronunErrPct: 0,
+                pronunWords: []
             };
 
             toast.success('Recording uploaded! Please wait for results');

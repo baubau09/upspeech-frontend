@@ -15,7 +15,8 @@ const Results = ({ n_words, pace, n_pace, fillers, n_fillers, pct_fillers, pronu
         if (pronun == 'Perfect') setPronunColor('#229c00');
         if (pronun == 'Needs Improvement') setPronunColor('#DC3545');
         if (pronun == 'Good') setPronunColor('#9c8200');
-    }, [pace, fillers, pct_fillers, pronun, pct_pronun])
+        console.log(pronun_words)
+    }, [pace, fillers, pct_fillers, pronun, pct_pronun, pronun_words])
 
 
     return (
@@ -61,7 +62,7 @@ const Results = ({ n_words, pace, n_pace, fillers, n_fillers, pct_fillers, pronu
                                 </div>
                                 <div className="text-center">
                                     <p>
-                                        You have <span className="fs-4">{n_fillers}</span> filler words in a speech, <br /> which account for about <span className="fs-4" style={{color: fillersColor}}>{pct_fillers}%</span> of your speech.
+                                        You have <span className="fs-4">{n_fillers}</span> filled pauses in a speech, <br /> which account for about <span className="fs-4" style={{color: fillersColor}}>{pct_fillers}%</span> of your speech.
                                     </p>
                                 </div>
                             </Tab.Pane>
@@ -73,16 +74,12 @@ const Results = ({ n_words, pace, n_pace, fillers, n_fillers, pct_fillers, pronu
                                     <p>
                                         You have <span className="fs-4">{n_pronun}</span> incorrectly pronounced words <br /> in a speech of {n_words} words, <br /> which account for <span className="fs-4 text-success">{pct_pronun}%</span> of your speech.
                                     </p>
-                                    
-                                    <p>
-                                    {
-                                        pronun_words && pronun_words.map((item) =>{
-                                            
-                                            <span>{item},</span>
-                                        })
-                                    }
-                                    </p>
-                                    
+                                </div>
+                                <div className="text-center">
+                                        {
+                                            pronun_words && pronun_words.map((item, index) => <p key={index}>{item}</p>
+                                            )
+                                        }
                                 </div>
                             </Tab.Pane>
                             <Tab.Pane eventKey="emotion" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
