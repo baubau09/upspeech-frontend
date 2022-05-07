@@ -73,7 +73,8 @@ const AudioRecorder = ({ script }) => {
                 pronunErr: 0,
                 pronunErrDesc: '',
                 pronunErrPct: 0,
-                pronunWords: []
+                pronunWords: [],
+                emotion: ''
             };
 
             toast.success('Recording uploaded! Please wait for results');
@@ -173,7 +174,7 @@ const AudioRecorder = ({ script }) => {
                         n_pronun={result.pronunErr}
                         pct_pronun={result.pronunErrPct}
                         pronun_words={result.pronunWords}
-                        emotion="Neutral" />
+                        emotion={result.emotion} />
                 </>
             }
 

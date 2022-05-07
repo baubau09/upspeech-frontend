@@ -70,7 +70,8 @@ export default function AudioUploader({ script }) {
             pronunErr: 0,
             pronunErrDesc: '',
             pronunErrPct: 0,
-            pronunWords: []
+            pronunWords: [],
+            emotion: ''
         };
 
         toast.success('Data uploaded! Please wait for results');
