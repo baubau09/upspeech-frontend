@@ -1,9 +1,9 @@
 //import 'bootstrap/dist/css/bootstrap.min.css'
 
 import Header from '../components/Header'
+import '../styles/globals.css'
 import '../styles/style.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import '../styles/globals.css'
 import Footer from '../components/Footer'
 
 import { useUserData } from '../lib/hooks'
