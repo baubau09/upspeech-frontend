@@ -81,7 +81,7 @@ export default function AudioUploader({ script }) {
         const newDocID = newDocRef.id
         console.log(newDocID)
         await axios.post(
-            `http://127.0.0.1:5000/api/eval`,
+            process.env.SERVER_API,
             {
                 uid,
                 username,
