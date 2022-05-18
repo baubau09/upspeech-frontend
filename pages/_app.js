@@ -1,11 +1,10 @@
 //import 'bootstrap/dist/css/bootstrap.min.css'
-
-import Header from '../components/Header'
 import '../styles/globals.css'
 import '../styles/style.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import Footer from '../components/Footer'
 
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { useUserData } from '../lib/hooks'
 import { Toaster } from 'react-hot-toast'
 import { UserContext } from '../lib/context'
