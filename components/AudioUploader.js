@@ -47,6 +47,7 @@ export default function AudioUploader({ script }) {
     };
 
     const submitData = async (e) => {
+        setAnalyzing(true)
         e.preventDefault();
         const uid = auth.currentUser.uid;
         //const docRef = doc(firestore, 'users', uid, 'speeches', speechID);
@@ -71,6 +72,7 @@ export default function AudioUploader({ script }) {
             pronunErrDesc: '',
             pronunErrPct: 0,
             pronunWords: [],
+            pronunWordsIdx: [],
             emotion: ''
         };
 
@@ -93,8 +95,9 @@ export default function AudioUploader({ script }) {
                 speechID: newDocID
             }
         ).then((res) => {
+            const myData = res.data
+            console.log(myData)
             setResult(res.data)
-            console.log(result)
             setAnalyzing(false)
             setIsResult(true)
         }).catch((e) => {
@@ -146,11 +149,17 @@ export default function AudioUploader({ script }) {
                         <button className='btn btn-primary-light' onClick={submitData}>Submit</button>
                     </div>
                 </>}
+            
+            <div className="d-flex justify-content-center mt-4">
+                <Loader show={analyzing} width='120' height='120' />
+
+            </div>
 
             {
                 isResult &&
                 <>
                     <Results
+                        script = {script}
                         n_words={result.wordCount}
                         pace={result.paceDesc}
                         n_pace={result.pace}
@@ -161,7 +170,8 @@ export default function AudioUploader({ script }) {
                         n_pronun={result.pronunErr}
                         pct_pronun={result.pronunErrPct}
                         pronun_words={result.pronunWords}
-                        emotion="Neutral" />
+                        pronun_words_idx={result.pronunWordsIdx}
+                        emotion={result.emotion} />
                 </>
             }
         </>

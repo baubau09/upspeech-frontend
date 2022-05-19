@@ -74,6 +74,7 @@ const AudioRecorder = ({ script }) => {
                 pronunErrDesc: '',
                 pronunErrPct: 0,
                 pronunWords: [],
+                pronunWordsIdx: [],
                 emotion: ''
             };
 
@@ -164,6 +165,7 @@ const AudioRecorder = ({ script }) => {
                 isResult &&
                 <>
                     <Results
+                        script = {script}
                         n_words={result.wordCount}
                         pace={result.paceDesc}
                         n_pace={result.pace}
@@ -174,6 +176,7 @@ const AudioRecorder = ({ script }) => {
                         n_pronun={result.pronunErr}
                         pct_pronun={result.pronunErrPct}
                         pronun_words={result.pronunWords}
+                        pronun_words_idx={result.pronunWordsIdx}
                         emotion={result.emotion} />
                 </>
             }
