@@ -4,8 +4,8 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
     const [paceColor, setPaceColor] = useState('')
     const [fillersColor, setFillersColor] = useState('')
     const [pronunColor, setPronunColor] = useState('')
-    const [pronunWordsColor, setPronunWordsColor] = useState('#DC3545')
-
+    
+    
     useEffect(() => {
         if (pace == 'Just Right') setPaceColor('#229c00');
         if (pace == 'Too Fast') setPaceColor('#9c8200');
@@ -16,49 +16,20 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
         if (pronun == 'Perfect' || 'Good') setPronunColor('#229c00');
         if (pronun == 'Bad') setPronunColor('#DC3545');
         if (pronun == 'Needs Improvement') setPronunColor('#9c8200');
-    }, [pace, fillers, pct_fillers, pronun, pct_pronun, pronun_words])
-    
-    const scriptArr = script.split()
+        
+    }, [pace, fillers, pct_fillers, pronun, pct_pronun, pronun_words, script, pronun_words_idx])
 
-    // const PrintScript = (word) => {
-    //     const res = <span>{word}&nbsp;</span>
-    //     for (var i = 0; i < scriptArr.length; i++) {
-    //         if (pronun_words.length < scriptArr.length) {
-    //             pronun_words.push("")
-    //         }
-    //         if (scriptArr[i].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"") == pronun_words[i]) {
-    //             res = <span style={{color: '#DC3545'}}>{word}&nbsp;</span>
-    //         }
-    //     }
-    //     return res
-    // } 
-
-    const PrintPronunResult = (props) => {
-        let res;
-        for (var i = 0; i < pronun_words_idx.length; i++) {
-            if (pronun_words_idx[i] == props.index) {
-                res = <span style={{color: pronunWordsColor}}>{props.word}&nbsp;</span>
-            }
-            else {
-                res = <span>{props.word}&nbsp;</span>;
-            }
-            console.log(props.index)
+    const scriptArr = script.split(' ')
+    const pronunComponent = () => {
+        let res = [];
+        for (let i = 0; i < scriptArr.length; i++) {
+            res.push(<span key={i}>{scriptArr[i]} </span>)
         }
-        return res
+        for (let i = 0; i < pronun_words_idx.length; i++) {
+            res[pronun_words_idx[i]] = <span key={pronun_words_idx[i]} style={{ color: '#DC3545' }}>{scriptArr[pronun_words_idx[i]]} </span>
+        }
+        return res;
     }
-
-    // {
-    //     let res;
-    //     for (var i = 0; i < pronun_words_idx.length; i++) {
-    //         if (index == pronun_words_idx[i]) {
-    //             res = <span style={{color: pronunWordsColor}}>{word}&nbsp;</span>
-    //         }
-    //         else {
-    //             res = <span>{word}&nbsp;</span>;
-    //         }
-    //     }
-    //     return res
-    // }
 
     return (
         <>
@@ -113,16 +84,17 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
                                 </div>
                                 <div className="text-center" style={{maxWidth: 360}}>
                                     <p>
-                                        You have <span className="fs-4">{n_pronun}</span> incorrectly pronounced words <br /> in a speech of {n_words} words, <br /> which account for <span className="fs-4" style={{color: pronunColor}}>{pct_pronun}%</span> of your speech.
+                                        You have <span className="fs-4">{n_pronun}</span> incorrectly pronounced words <br /> in a speech of {n_words} words, <br /> which account for <span className="fs-4" style={{color: pronunColor}}>{pct_pronun}%</span> of your speech. Here are some detailed analysis:
                                     </p>
                                 </div>
+                                
                                 <div className="text-center" style={{maxWidth: 360}}>
-                                        {scriptArr && scriptArr.map((word, index, array) =>  {
-                                            return <PrintPronunResult key={index} word={word} index={index}/>
-                                        }
-                                            
-                                        )}
+                                    <div className="border mb-2"></div>
+                                    {pronunComponent()}
+                                    <div className="border mt-2"></div>
+                                    <p className="mt-2" style={{fontSize: 12}}>The words that need improvements are highlighted in red!</p>
                                 </div>
+                                
                             </Tab.Pane>
                             <Tab.Pane eventKey="emotion" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
