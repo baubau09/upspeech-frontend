@@ -9,7 +9,8 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
+import 'chartjs-adapter-moment';
+import moment from 'moment';
 
 ChartJS.register(
     CategoryScale,
@@ -24,6 +25,7 @@ export const options = {
     responsive: true,
     plugins: {
         legend: {
+            display: false,
             position: 'top',
             labels: {
                 color: 'rgba(255, 255, 255, 0.8)',
@@ -33,11 +35,12 @@ export const options = {
             }
         },
         title: {
-            display: false,
-            text: 'Chart.js Bar Chart',
-            color: 'rgba(255, 255, 255, 0.8)',
+            display: true,
+            text: 'Number of incorrect pronunciations from the last 30 submissions over time',
+            color: 'rgba(255, 255, 255)',
             font: {
-                family: 'Montserrat'
+                family: 'Montserrat',
+                size: 16
             }
         },
         tooltip: {
@@ -86,17 +89,27 @@ export const options = {
 
 const labels = [...Array(30).keys()].map(i => i + 1)
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: 'Incorrect Pronunciations',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 300 })),
-            backgroundColor: 'rgba(221, 195, 224, 0.8)',
-        },
-    ],
-};
+export default function PronunChart({speeches}) {
+    const dataArr = []
+    const labelArr = []
 
-export default function PronunChart() {
+    if (speeches) {
+        speeches.forEach(item => {
+            const date = typeof item?.uploadedAt === 'number' ? new Date(item.uploadedAt) : item.uploadedAt.toDate();
+            labelArr.push(moment(date).format('MMM Do h:mma'))
+            dataArr.push(item?.pronunErr)
+        });
+    }
+    const data = {
+        labels: labelArr,
+        datasets: [
+            {
+                label: 'Incorrect Pronunciations',
+                data: dataArr,
+                backgroundColor: 'rgba(221, 195, 224, 0.8)',
+            },
+        ],
+    };
+
     return <Bar options={options} data={data} />;
 }

@@ -11,7 +11,8 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
+import 'chartjs-adapter-moment';
+import moment from 'moment';
 
 ChartJS.register(
     CategoryScale,
@@ -39,7 +40,7 @@ export const options = {
         },
         title: {
             display: true,
-            text: 'Number of Filled Pauses in your last 30 submissions over time',
+            text: 'Number of Filled Pauses the your last 30 submissions over time',
             color: 'rgba(255, 255, 255)',
             font: {
                 family: 'Montserrat',
@@ -94,21 +95,32 @@ export const options = {
 
 const labels = [...Array(30).keys()].map(i => i + 1)
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: 'Filled Pauses',
-            data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-            backgroundColor: 'rgba(179, 206, 229, 0.7)',
-            borderColor: 'rgba(179, 206, 229, 0.8)',
-            pointStyle: 'circle',
-            pointRadius: 6,
-            pointHoverRadius: 10
-        },
-    ],
-};
 
-export default function FilledPausesChart() {
+export default function FilledPausesChart({speeches}) {
+    const dataArr = []
+    const labelArr = []
+
+    if (speeches) {
+        speeches.forEach(item => {
+            const date = typeof item?.uploadedAt === 'number' ? new Date(item.uploadedAt) : item.uploadedAt.toDate();
+            labelArr.push(moment(date).format('MMM Do h:mma'))
+            dataArr.push(item?.fillers)
+        });
+    }
+
+    const data = {
+        labels: labelArr,
+        datasets: [
+            {
+                label: 'Filled Pauses',
+                data: dataArr,
+                backgroundColor: 'rgba(179, 206, 229, 0.7)',
+                borderColor: 'rgba(179, 206, 229, 0.8)',
+                pointStyle: 'circle',
+                pointRadius: 6,
+                pointHoverRadius: 10
+            },
+        ],
+    };
     return <Line options={options} data={data} />;
 }
