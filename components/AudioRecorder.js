@@ -47,7 +47,6 @@ const AudioRecorder = ({ script }) => {
     };
 
     const blobProcessing = async () => {
-
         setAnalyzing(true)
         // const audioBlob = await fetch(mediaBlobUrl).then(r => { r.blob() })
         //const docRef = doc(firestore, 'users', uid, 'speeches', speechID);
@@ -108,13 +107,6 @@ const AudioRecorder = ({ script }) => {
 
         }
     }
-
-
-
-    // const submitData = async () => {
-    //     setIsResult(true)
-    // }
-
 
     return (
         <>

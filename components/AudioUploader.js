@@ -47,8 +47,8 @@ export default function AudioUploader({ script }) {
     };
 
     const submitData = async (e) => {
-        setAnalyzing(true)
         e.preventDefault();
+        setAnalyzing(true)
         const uid = auth.currentUser.uid;
         //const docRef = doc(firestore, 'users', uid, 'speeches', speechID);
         const collectionRef = collection(getFirestore(), 'users', uid, 'speeches')
