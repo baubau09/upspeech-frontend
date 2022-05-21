@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useContext} from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -20,7 +20,19 @@ export default function EmotionChart({ speeches }) {
     }
 
     const options = {
-        responsive: true
+        responsive: true,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    color: 'rgba(255, 255, 255, 0.8)',
+                    font: {
+                        family: 'Montserrat'
+                    }
+                }
+            },
+        }
     }
 
     const data = {
@@ -49,5 +61,5 @@ export default function EmotionChart({ speeches }) {
             },
         ],
     };
-    return <Pie options={options} data={data} />;
+    return <Doughnut options={options} data={data} />;
 }
