@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback, useContext } from 'react';
 import { UserContext } from '../lib/context';
 import debounce from 'lodash.debounce';
 import { Alert } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
 const LoginPage = () => {
     const { user, username } = useContext(UserContext);

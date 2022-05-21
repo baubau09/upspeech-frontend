@@ -36,22 +36,22 @@ const DashboardComponent = () => {
         <>
             <div className="container">
                 <div className="row mb-5">
-                    <div className="col">
-                        <h6 className="fw-bold text-center">Speech speed (wpm) from the last 30 submissions over time</h6>
+                    <div className="col mt-5">
+                        <h5 className="fw-bold text-center">Speech speed (wpm) from the last 30 submissions over time</h5>
                         <PaceChart speeches={speeches}/>
                     </div>
-                    <div className="col">
-                        <h6 className="fw-bold text-center">Number of Filled Pauses from the last 30 submissions over time</h6>
+                    <div className="col mt-5">
+                        <h5 className="fw-bold text-center">Number of Filled Pauses from the last 30 submissions over time</h5>
                         <FilledPausesChart speeches={speeches} />
                     </div>
                 </div>
                 <div className="row">
-                <div className="col">
-                    <h6 className="fw-bold text-center">Number of incorrect pronunciations from the last 30 submissions over time</h6>
+                <div className="col mt-5">
+                    <h5 className="fw-bold text-center">Number of incorrect pronunciations from the last 30 submissions over time</h5>
                     <PronunChart speeches={speeches}/>
                 </div>
-                <div className="col">
-                    <h6 className="fw-bold text-center">Number of emotion distribution from the last 30 submissions</h6>
+                <div className="col mt-5">
+                    <h5 className="fw-bold text-center">Number of emotion distribution from the last 30 submissions</h5>
                     <EmotionChart speeches={speeches}/>
                 </div>
             </div>
