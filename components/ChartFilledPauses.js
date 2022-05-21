@@ -39,7 +39,7 @@ export const options = {
             }
         },
         title: {
-            display: true,
+            display: false,
             text: 'Number of Filled Pauses the your last 30 submissions over time',
             color: 'rgba(255, 255, 255)',
             font: {

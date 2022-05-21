@@ -40,7 +40,7 @@ export const options = {
             }
         },
         title: {
-            display: true,
+            display: false,
             text: 'Number of incorrect pronunciations from the last 30 submissions over time',
             color: 'rgba(255, 255, 255)',
             font: {
