@@ -4,6 +4,8 @@ import {
     CategoryScale,
     LinearScale,
     BarElement,
+    LineElement,
+    PointElement,
     Title,
     Tooltip,
     Legend,
@@ -16,6 +18,8 @@ ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
+    LineElement,
+    PointElement,
     Title,
     Tooltip,
     Legend
@@ -23,6 +27,7 @@ ChartJS.register(
 
 export const options = {
     responsive: true,
+    type: 'line',
     plugins: {
         legend: {
             display: false,
@@ -106,10 +111,14 @@ export default function PronunChart({speeches}) {
             {
                 label: 'Incorrect Pronunciations',
                 data: dataArr,
-                backgroundColor: 'rgba(221, 195, 224, 0.8)',
+                backgroundColor: 'rgba(221, 195, 224, 0.75)',
+                borderColor: 'rgba(221, 195, 224, 0.8)',
+                pointStyle: 'circle',
+                pointRadius: 6,
+                pointHoverRadius: 10
             },
         ],
     };
 
-    return <Bar options={options} data={data} />;
+    return <Line options={options} data={data} />;
 }
