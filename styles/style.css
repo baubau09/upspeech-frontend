@@ -81,6 +81,8 @@ a.welcome.active:hover {
     animation: glowing 1300ms infinite;
 }
 
+
+
 /*--------------------------------------------------------------
 # Input
 --------------------------------------------------------------*/
@@ -96,6 +98,13 @@ input:focus-visible {
 /*--------------------------------------------------------------
 # Buttons
 --------------------------------------------------------------*/
+div.carousel-indicators > button {
+    border-radius: 0px !important;
+}
+
+div.carousel-indicators > button:hover {
+    box-shadow: none;
+}
 
 button {
     border-radius: 50px !important;
