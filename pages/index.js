@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Container } from 'react-bootstrap'
 import AboutUs from '../components/AboutUs'
 import ContactUs from '../components/ContactUs'
-
+import Features from '../components/Features'
 export default function Home() {
     return (
         <>
@@ -35,6 +35,7 @@ export default function Home() {
                 </div>
             </div>
         </section>
+        <Features/>
         <AboutUs/>
         <ContactUs/>
         </>
