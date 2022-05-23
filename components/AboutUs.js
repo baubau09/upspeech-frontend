@@ -33,7 +33,7 @@ const AboutUs = () => {
                     <div className="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div className="member">
                             <div className="member-img">
-                                <img src="/team-4.jpg" className="img-fluid" alt="" />
+                                <img src="/tri.jpg" className="img-fluid" alt="" />
                                 <div className="social">
                                     <a href=""><i className="bi bi-twitter"></i></a>
                                     <a href=""><i className="bi bi-facebook"></i></a>
@@ -44,7 +44,7 @@ const AboutUs = () => {
                             <div className="member-info">
                                 <h4>Tri Truong</h4>
                                 <span>Project Manager</span>
-                                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                                <p>I am currently undertaking my Bachelor degree at RMIT University Vietnam in Information Technology, minoring in Artificial Intelligence.</p>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ const AboutUs = () => {
                     <div className="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div className="member">
                             <div className="member-img">
-                                <img src="/team-2.jpg" className="img-fluid" alt="" />
+                                <img src="/kt.jpg" className="img-fluid" alt="" />
                                 <div className="social">
                                     <a href=""><i className="bi bi-twitter"></i></a>
                                     <a href=""><i className="bi bi-facebook"></i></a>
@@ -63,7 +63,7 @@ const AboutUs = () => {
                             <div className="member-info">
                                 <h4>Anh Tran</h4>
                                 <span>Software Architect</span>
-                                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                                <p>I am a student at RMIT University Vietnam, where I am majoring in Information Technology (Data Analytics stream).</p>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ const AboutUs = () => {
                     <div className="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div className="member">
                             <div className="member-img">
-                                <img src="/team-3.jpg" className="img-fluid" alt="" />
+                                <img src="/linh.jpg" className="img-fluid" alt="" />
                                 <div className="social">
                                     <a href=""><i className="bi bi-twitter"></i></a>
                                     <a href=""><i className="bi bi-facebook"></i></a>
@@ -82,7 +82,7 @@ const AboutUs = () => {
                             <div className="member-info">
                                 <h4>Linh Bui</h4>
                                 <span>Sofware Engineer</span>
-                                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                                <p>As a second-year student of RMIT, I personally had gained sufficient programming skills and experience with IT projects from the previous courses.</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ const AboutUs = () => {
                     <div className="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div className="member">
                             <div className="member-img">
-                                <img src="/team-1.jpg" className="img-fluid" alt="" />
+                                <img src="/son.jpg" className="img-fluid" alt="" />
                                 <div className="social">
                                     <a href=""><i className="bi bi-twitter"></i></a>
                                     <a href=""><i className="bi bi-facebook"></i></a>
@@ -101,7 +101,7 @@ const AboutUs = () => {
                             <div className="member-info">
                                 <h4>Son Le</h4>
                                 <span>Data Scientist</span>
-                                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
+                                <p>I am currently enrolled at RMIT University in Vietnam, where I am completing a degree in Information Technology with a minor in Data Analytics.</p>
                             </div>
                         </div>
                     </div>

@@ -25,8 +25,10 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
         for (let i = 0; i < scriptArr.length; i++) {
             res.push(<span key={i}>{scriptArr[i]} </span>)
         }
-        for (let i = 0; i < pronun_words_idx.length; i++) {
-            res[pronun_words_idx[i]] = <span key={pronun_words_idx[i]} style={{ color: '#DC3545' }}>{scriptArr[pronun_words_idx[i]]} </span>
+        if (pronun_words_idx) {
+            for (let i = 0; i < pronun_words_idx.length; i++) {
+                res[pronun_words_idx[i]] = <span key={pronun_words_idx[i]} style={{ color: '#DC3545' }}>{scriptArr[pronun_words_idx[i]]} </span>
+            }
         }
         return res;
     }
