@@ -34,6 +34,11 @@ const Header = () => {
                         </Nav.Link>
                     </li>
                     <li className="nav-item mx-2">
+                        <Nav.Link href="/#features" className="nav-link welcome">
+                            Features
+                        </Nav.Link>
+                    </li>
+                    <li className="nav-item mx-2">
                         <Nav.Link href="/#about" className="nav-link welcome">
                             About us
                         </Nav.Link>
@@ -55,7 +60,7 @@ const Header = () => {
                 </Nav>
 
                 <AuthCheck>
-                    <div className="col-md-3 me-0 pe-0 text-end">
+                    <div className="me-0 pe-0 text-end">
                         <Dropdown>
                             <Dropdown.Toggle className="bg-transparent border-0 text-body">
                                 {!isLoading && user ?
