@@ -6,7 +6,7 @@ import { UserContext } from "../lib/context";
 import toast from "react-hot-toast";
 import AudioRecorder from "../components/AudioRecorder";
 import AuthCheck from "../components/AuthCheck";
-
+import Head from "next/head";
 export default function SpeakPage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [script, setScript] = useState('')
@@ -20,6 +20,9 @@ export default function SpeakPage() {
 
     return (
         <>
+        <Head>
+        <title>UpSpeech - Speech Analysis</title>
+        </Head>
             <AuthCheck>
                 <div className="d-flex justify-content-center">
                     <h3>Step 1: Enter your script here</h3>

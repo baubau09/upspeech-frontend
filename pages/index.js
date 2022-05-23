@@ -8,7 +8,9 @@ import ContactUs from '../components/ContactUs'
 export default function Home() {
     return (
         <>
-        
+        <Head>
+        <title>UpSpeech - A complete solution for improving your English speaking skills</title>
+        </Head>
         <section id="home">
             <div className="container my-5">
                 <div className="row p-4 pb-0 pe-lg-0 align-items-center">
