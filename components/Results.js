@@ -4,6 +4,7 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
     const [paceColor, setPaceColor] = useState('')
     const [fillersColor, setFillersColor] = useState('')
     const [pronunColor, setPronunColor] = useState('')
+    const [myEmotion, setMyEmotion] = useState('')
     
     
     useEffect(() => {
@@ -16,8 +17,11 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
         if (pronun == 'Perfect' || 'Good') setPronunColor('#229c00');
         if (pronun == 'Bad') setPronunColor('#DC3545');
         if (pronun == 'Needs Improvement') setPronunColor('#9c8200');
+        if (emotion) {
+            setMyEmotion(emotion)
+        }
         
-    }, [pace, fillers, pct_fillers, pronun, pct_pronun, pronun_words, script, pronun_words_idx])
+    }, [emotion, pace, fillers, pct_fillers, pronun, pct_pronun, pronun_words, script, pronun_words_idx])
 
     const scriptArr = script.split(' ')
     const pronunComponent = () => {
@@ -100,11 +104,11 @@ const Results = ({ script, n_words, pace, n_pace, fillers, n_fillers, pct_filler
                             </Tab.Pane>
                             <Tab.Pane eventKey="emotion" className="border-light border-1 shadow text-dark ms-3 py-4 px-5" style={{ borderRadius: 15, background: '#fff', opacity: 1 }}>
                                 <div className="d-flex justify-content-center">
-                                    <p style={{ color: '#229c00', fontWeight: 600 }} className="fs-3">{emotion.charAt(0).toUpperCase() + emotion.slice(1)}</p>
+                                    <p style={{ color: '#229c00', fontWeight: 600 }} className="fs-3">{myEmotion.charAt(0).toUpperCase() + myEmotion.slice(1)}</p>
                                 </div>
                                 <div className="text-center" style={{maxWidth: 360}}>
                                     <p>
-                                        You seem to have a {emotion} tone<br /> in your speech!
+                                        You seem to have a {myEmotion} tone<br /> in your speech!
                                     </p>
                                 </div>
                             </Tab.Pane>
